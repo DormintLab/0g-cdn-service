@@ -70,7 +70,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  */
 app.get('/download/:rootHash', async (req, res) => {
   const { rootHash } = req.params;
-  const outputPath = `downloads/${rootHash}`;
+  const outputPath = path.join(process.cwd(), 'downloads', rootHash);
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 
   try {
